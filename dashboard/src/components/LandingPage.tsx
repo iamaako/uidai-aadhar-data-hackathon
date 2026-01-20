@@ -19,19 +19,36 @@ export default function LandingPage() {
 
                 {/* Hero Section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-20 max-w-3xl"
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="text-center mb-24 max-w-5xl relative z-10"
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium uppercase tracking-wider mb-6">
-                        <Fingerprint size={14} /> Data Hackathon 2026
-                    </div>
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
-                        UIDAI Analytics & <br />Intelligence Hub
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 0.8 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-widest mb-8 shadow-[0_0_20px_rgba(99,102,241,0.3)] backdrop-blur-md"
+                    >
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                        </span>
+                        UIDAI Data Hackathon 2026
+                    </motion.div>
+
+                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[1.1]">
+                        <span className="bg-gradient-to-b from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-2xl">
+                            Next-Gen Intelligence
+                        </span>
+                        <br />
+                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-text-gradient">
+                            For Aadhaar Data
+                        </span>
                     </h1>
-                    <p className="text-lg text-slate-400 leading-relaxed">
-                        Next-generation dashboard for Aadhaar data analysis. Detect anomalies, monitor border security, and identify demographic trends with AI-powered insights.
+
+                    <p className="text-xl md:text-2xl text-slate-400/90 leading-relaxed max-w-3xl mx-auto font-light">
+                        Unlock predictive insights, detect anomalies, and optimize logistics with our <span className="text-white font-medium">AI-powered neural dashboard</span>.
                     </p>
                 </motion.div>
 
