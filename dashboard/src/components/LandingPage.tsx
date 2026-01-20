@@ -123,51 +123,63 @@ export default function LandingPage() {
 
                 </div>
 
-                {/* Footer */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="mt-20 flex gap-6 text-slate-500 text-sm"
-                >
-                    <div className="flex items-center gap-2">
-                        <Activity size={16} /> Real-time Processing
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Map size={16} /> Geospatial Analysis
-                    </div>
-                </motion.div>
             </div>
+
+            {/* Footer */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mt-20 flex gap-6 text-slate-500 text-sm"
+            >
+                <div className="flex items-center gap-2">
+                    <Activity size={16} /> Real-time Processing
+                </div>
+                <div className="flex items-center gap-2">
+                    <Map size={16} /> Geospatial Analysis
+                </div>
+            </motion.div>
         </div>
+        </div >
     );
 }
 
 function FeatureCard({ href, title, description, icon, gradient, border, delay }: any) {
     return (
-        <Link href={href} className="group">
+        <Link href={href} className="group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: delay, duration: 0.5 }}
-                className={`h-full relative overflow-hidden bg-[#131B2C] border ${border} hover:border-white/20 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hoverShadow hover:-translate-y-1`}
+                className={`h-full relative overflow-hidden bg-[#0F1623] border border-white/5 rounded-[2rem] p-8 transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.3)] group-hover:border-indigo-500/30 group-hover:-translate-y-2`}
             >
-                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                {/* Dynamic Gradient Background On Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+
+                {/* Subtle Grid Pattern Overlay */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-125 mix-blend-overlay pointer-events-none"></div>
 
                 <div className="relative z-10 flex flex-col h-full">
-                    <div className="mb-6 p-4 bg-[#0B0F19]/50 rounded-2xl w-fit border border-white/5 group-hover:scale-110 transition-transform duration-300">
-                        {icon}
+                    {/* Icon Container */}
+                    <div className="mb-8 relative">
+                        <div className="absolute inset-0 bg-indigo-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="relative w-14 h-14 bg-[#1A2333] border border-white/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
+                            {React.cloneElement(icon, { size: 28, className: `${icon.props.className} group-hover:text-white transition-colors` })}
+                        </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                    <h3 className="text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-indigo-200 transition-all">
                         {title}
                     </h3>
 
-                    <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-1 group-hover:text-slate-300 transition-colors">
+                    <p className="text-slate-400 text-base leading-relaxed mb-10 flex-1 group-hover:text-slate-300 transition-colors font-light">
                         {description}
                     </p>
 
-                    <div className="flex items-center gap-2 text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">
-                        Explore Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center gap-3 text-sm font-bold text-indigo-400 group-hover:text-white transition-colors uppercase tracking-widest">
+                        <span>Launch Module</span>
+                        <div className="w-8 h-[1px] bg-indigo-500/50 group-hover:w-12 group-hover:bg-white transition-all duration-300"></div>
+                        <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />
                     </div>
                 </div>
             </motion.div>
