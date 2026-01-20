@@ -64,11 +64,11 @@ export default function MigrationTracker() {
         // Map previous month data for quick lookup
         const historyMap = new Map<string, number>();
         historicalData.forEach(r => {
-            historyMap.set(r.pincode, r.data.demographic_update.age_18_above);
+            historyMap.set(r.pincode, r.data.demographic_update.age_17_above);
         });
 
         currentData.forEach(record => {
-            const currentVal = record.data.demographic_update.age_18_above;
+            const currentVal = record.data.demographic_update.age_17_above;
 
             // Get Baseline: Real previous month OR simulate a baseline for demo (e.g., currentVal * 0.6)
             // This ensures we can SHOW the alerts even with limited dataset in the hackathon.
