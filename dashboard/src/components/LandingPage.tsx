@@ -36,14 +36,14 @@ export default function LandingPage() {
                 </motion.div>
 
                 {/* Feature Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
 
                     {/* Feature 1: Main Dashboard */}
                     <FeatureCard
                         href="/dashboard"
                         title="Analytics Dashboard"
-                        description="Comprehensive view of enrolments, biometric updates, and demographic trends across India."
-                        icon={<LayoutDashboard size={32} className="text-indigo-400" />}
+                        description="Comprehensive view of enrolments and updates."
+                        icon={<LayoutDashboard size={28} className="text-indigo-400" />}
                         gradient="from-indigo-500/20 to-blue-600/5"
                         border="border-indigo-500/20"
                         delay={0.1}
@@ -53,8 +53,8 @@ export default function LandingPage() {
                     <FeatureCard
                         href="/security"
                         title="Border Security"
-                        description="AI-driven detection of illegal immigration anomalies in border states using enrolment ratios."
-                        icon={<ShieldAlert size={32} className="text-red-400" />}
+                        description="Detection of illegal immigration via risk ratios."
+                        icon={<ShieldAlert size={28} className="text-red-400" />}
                         gradient="from-red-500/20 to-orange-600/5"
                         border="border-red-500/20"
                         delay={0.2}
@@ -63,12 +63,23 @@ export default function LandingPage() {
                     {/* Feature 3: Scheme Rush */}
                     <FeatureCard
                         href="/scheme-rush"
-                        title="Scheme Rush Detector"
-                        description="Identify government scheme impacts by analyzing surges in demographic update requests."
-                        icon={<TrendingUp size={32} className="text-emerald-400" />}
+                        title="Scheme Rush"
+                        description="Identify government scheme impacts via surges."
+                        icon={<TrendingUp size={28} className="text-emerald-400" />}
                         gradient="from-emerald-500/20 to-teal-600/5"
                         border="border-emerald-500/20"
                         delay={0.3}
+                    />
+
+                    {/* Feature 4: Migration Tracker */}
+                    <FeatureCard
+                        href="/migration"
+                        title="Migration Tracker"
+                        description="Track urban planning needs based on influx."
+                        icon={<Activity size={28} className="text-blue-400" />} // Using Activity for now, imported above. Or I can import Waves if needed, but staying consistent.
+                        gradient="from-blue-500/20 to-cyan-600/5"
+                        border="border-blue-500/20"
+                        delay={0.4}
                     />
 
                 </div>
