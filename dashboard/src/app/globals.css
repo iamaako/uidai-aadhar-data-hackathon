@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mid-night: #0B0F19;
+  --color-neon-indigo: #6366f1;
+}
+
+body {
+  background-color: var(--color-mid-night);
+  color: white;
+  font-size: 20px;
+  /* Much larger base */
+}
+
+/* Responsive font scaling */
+@media (min-width: 768px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 24px;
+  }
+}
+
+/* Table improvements - MUCH BIGGER */
+table {
+  font-size: 1.15em;
+}
+
+table th {
+  font-size: 1em;
+  padding: 1.5rem 1.75rem !important;
+  font-weight: 600;
+}
+
+table td {
+  padding: 1.75rem 1.75rem !important;
+  font-size: 1.1em;
+}
+
+/* Headings - BIGGER */
+h1 {
+  font-size: 2.25em !important;
+}
+
+h2 {
+  font-size: 1.875em !important;
+}
+
+h3 {
+  font-size: 1.5em !important;
+}
+
+h4 {
+  font-size: 1.25em !important;
+}
+
+/* Stats cards - HUGE numbers */
+.text-3xl {
+  font-size: 3.5rem !important;
+  line-height: 1.2 !important;
+}
+
+.text-2xl {
+  font-size: 2rem !important;
+}
+
+.text-xl {
+  font-size: 1.75rem !important;
+}
+
+.text-lg {
+  font-size: 1.5rem !important;
+}
+
+/* Small text should also be readable */
+.text-sm {
+  font-size: 1rem !important;
+}
+
+.text-xs {
+  font-size: 0.95rem !important;
+}
+
+/* Button text */
+button {
+  font-size: 1.1em !important;
+}
