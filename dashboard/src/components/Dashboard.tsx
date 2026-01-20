@@ -355,13 +355,13 @@ export default function Dashboard() {
                                 <AnimatePresence>
                                     {mapPopupState && (
                                         <motion.div
-                                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                                            className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#1e293b] border border-indigo-500/50 p-6 rounded-2xl shadow-2xl min-w-[300px] z-50 text-center"
+                                            initial={{ scale: 0.9, opacity: 0 }}
+                                            animate={{ scale: 1, opacity: 1 }}
+                                            exit={{ scale: 0.9, opacity: 0 }}
+                                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1e293b]/95 backdrop-blur-md border border-indigo-500/50 p-6 rounded-2xl shadow-2xl min-w-[320px] z-50 text-center"
                                         >
-                                            <h3 className="text-2xl font-bold mb-1 text-white">{mapPopupState}</h3>
-                                            <p className="text-slate-400 text-sm mb-4">View detailed analytics for this state</p>
+                                            <h3 className="text-2xl font-bold mb-2 text-white">{mapPopupState}</h3>
+                                            <p className="text-slate-300 text-sm mb-6">View detailed analytics for this state</p>
 
                                             <div className="flex gap-3 justify-center">
                                                 <button

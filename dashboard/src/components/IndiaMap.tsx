@@ -57,7 +57,7 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
 
         const proj = d3.geoMercator()
             .center([78.9629, 23.5937])
-            .scale(1000)
+            .scale(700) // Reduced scale for better visibility
             .translate([400, 300]);
 
         const path = d3.geoPath().projection(proj);
@@ -81,7 +81,6 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!isDragging) return;
         e.preventDefault(); // Prevent text selection
-        // Using functional update is robust, but for 60fps, ensure heavy calculations are minimal
         const newX = e.clientX - startPoint.x;
         const newY = e.clientY - startPoint.y;
         setTransform(prev => ({ ...prev, x: newX, y: newY }));
@@ -92,9 +91,8 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
     // Stable callbacks for children
     const handleHover = useCallback((name: string | null) => {
         setHoveredState(name);
-    }, []); // Only recreates if dependencies change (none here)
+    }, []);
 
-    // We wrap onStateSelect to ensure stable reference if parent didn't memoize it
     const handleSelect = useCallback((name: string) => {
         console.log("Selected:", name);
         onStateSelect(name);
@@ -114,18 +112,17 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 style={{
-                    scrollbarWidth: 'none', // Firefox
-                    msOverflowStyle: 'none'  // IE/Edge
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none'
                 }}
             >
-                {/* Hide scrollbar for Chrome/Safari */}
                 <style jsx>{`
                 div::-webkit-scrollbar {
                     display: none;
                 }
             `}</style>
 
-                {/* SVG Layer - Allow it to grow beyond viewport when zoomed */}
+                {/* SVG Layer */}
                 <svg
                     viewBox="0 0 800 600"
                     className="w-full h-full min-w-full min-h-full"
@@ -134,7 +131,6 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
                         height: `${100 * transform.k}%`
                     }}
                 >
-                    {/* We apply transform here. The children do NOT re-render because props (feature, pathGen) haven't changed. */}
                     <g transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`} className="pointer-events-auto">
                         {geoData.features.map((feature: any, i: number) => (
                             <MapFeature
@@ -156,8 +152,8 @@ export default function IndiaMap({ onStateSelect }: IndiaMapProps) {
                 </div>
             )}
 
-            {/* Controls */}
-            <div className="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
+            {/* Controls - Moved higher up */}
+            <div className="absolute bottom-8 right-8 flex flex-col gap-2 z-20">
                 <button onClick={() => handleZoom(1.2)} className="bg-slate-800/80 backdrop-blur p-2 rounded-lg text-white hover:bg-indigo-600 transition shadow-lg border border-white/10 active:scale-95" title="Zoom In">
                     <ZoomIn size={20} />
                 </button>
