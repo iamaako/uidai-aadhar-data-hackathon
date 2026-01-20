@@ -1,0 +1,25 @@
+
+import { getASIData } from "@/lib/asi";
+import ASIModule from "@/components/ASIModule";
+
+export const dynamic = 'force-dynamic';
+
+export default async function ASIPage() {
+    try {
+        const asiData = await getASIData();
+
+        return (
+            <main className="min-h-screen">
+                <ASIModule data={asiData} />
+            </main>
+        );
+    } catch (error) {
+        return (
+            <div style={{ color: 'white', padding: '2rem', textAlign: 'center' }}>
+                <h1>Analysis Error</h1>
+                <p>Could not load protocol data. Ensure monthly JSON files are present.</p>
+                <pre>{(error as Error).message}</pre>
+            </div>
+        );
+    }
+}

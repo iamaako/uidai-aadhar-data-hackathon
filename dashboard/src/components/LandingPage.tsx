@@ -36,7 +36,7 @@ export default function LandingPage() {
                 </motion.div>
 
                 {/* Feature Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                <div className="flex flex-wrap justify-center gap-6 w-full">
 
                     {/* Feature 1: Main Dashboard */}
                     <FeatureCard
@@ -80,6 +80,28 @@ export default function LandingPage() {
                         gradient="from-blue-500/20 to-cyan-600/5"
                         border="border-blue-500/20"
                         delay={0.4}
+                    />
+
+                    {/* Feature 5: ASI Protocol */}
+                    <FeatureCard
+                        href="/asi"
+                        title="Aadhaar Stress Index"
+                        description="Real-time predictive analytics identifying operational bottlenecks."
+                        icon={<Activity size={28} className="text-purple-400" />}
+                        gradient="from-purple-500/20 to-violet-600/5"
+                        border="border-purple-500/20"
+                        delay={0.5}
+                    />
+
+                    {/* Feature 6: SADRA Module */}
+                    <FeatureCard
+                        href="/sadra"
+                        title="SADRA Planner"
+                        description="Seasonal Aadhaar Demand & Resource Allocator."
+                        icon={<Activity size={28} className="text-yellow-400" />}
+                        gradient="from-yellow-500/20 to-orange-600/5"
+                        border="border-yellow-500/20"
+                        delay={0.6}
                     />
 
                 </div>
